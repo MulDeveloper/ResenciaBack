@@ -12,7 +12,8 @@ import com.resencia.backoffice.app.Personal.Dominio.PersonalResencia;
  * @author bunn3
  */
 public interface ServicePersonal {
-    
+   
     public PersonalResencia getById(int id);
     public PersonalResencia save(PersonalResencia p);
+    public boolean delById(int id);
 }

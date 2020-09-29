@@ -15,6 +15,8 @@ public class ServicePersonalPostgre implements ServicePersonal{
     @Autowired
     private DAOPersonalResencia dao;
     
+    
+    
     @Override
     public PersonalResencia getById(int id) {
         return dao.getOne(id);
@@ -23,6 +25,17 @@ public class ServicePersonalPostgre implements ServicePersonal{
     @Override
     public PersonalResencia save(PersonalResencia p) {
         return dao.save(p);
+    }
+
+    @Override
+    public boolean delById(int id) {
+        try{
+            dao.deleteById(id);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
     }
 
    

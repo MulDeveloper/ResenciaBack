@@ -9,6 +9,7 @@ import com.resencia.backoffice.app.AccesoPersonal.Dominio.AccesoPersonalResencia
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,9 +52,9 @@ public class PersonalResencia implements Serializable {
     private String emailPersonal;
     @Column(name = "telefono")
     private String telefono;
-    @OneToMany(mappedBy = "userid")
+    @OneToMany(mappedBy = "userid", cascade=CascadeType.ALL)
     private List<RolesResencia> rolesResenciaList;
-    @OneToMany(mappedBy = "idpersonal")
+    @OneToMany(mappedBy = "idpersonal",cascade=CascadeType.ALL)
     private List<AccesoPersonalResencia> accesoPersonalResenciaList;
 
     public PersonalResencia() {

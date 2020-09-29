@@ -15,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,5 +73,19 @@ public class PersonalController {
         
         return "index";
         
+    }
+    
+    @DeleteMapping("/del/{id}")
+    public String delPersonal(@PathVariable Integer id){
+        //logica de baja
+        /*
+            Observar que tenemos el cascade delete en la entidad de dominio PersonalResencia
+        */
+        
+        servicePersonal.delById(id);
+
+        //retornamos lista de personal
+ 
+        return "index";
     }
 }
