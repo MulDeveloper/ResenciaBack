@@ -44,8 +44,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .logout().permitAll();
         
-        http.csrf().ignoringAntMatchers("/v0/**");
-        
     }
     
     
