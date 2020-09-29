@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Resencia </title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="../../../css/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Timeline CSS -->
+        <link href="../../../css/timeline.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../../../css/startmin.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="../../../css/morris.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <div th:replace="../fragments/nav :: nav"/>
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Resencia Dashboard</h1>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-tasks fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">Trello</div>
+                                            <div>Lista de tareas</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Ir a trello</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-shopping-cart fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">0</div>
+                                            <div>Servicios</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Ver servicios</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-support fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">0</div>
+                                            <div>Tickets de soporte</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">Ver Tickets</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> Ventas totales
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div>
+                                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> Ultimos servicios
+                                </div>
+                                <!-- /.panel-heading -->
+                                
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-hover table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Id Servicio</th>
+                                                        <th>Fecha</th>
+                                                        <th>Servicio</th>
+                                                        <th>Precio</th>
+                                                        <th>Detalle</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>10/08/2020</td>
+                                                        <td>Tienda Online</td>
+                                                        <td>450€</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success btn-circle"/>
+                                                            <i class="fa fa-search-plus"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>10/08/2020</td>
+                                                        <td>App Android</td>
+                                                        <td>4500€</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success btn-circle"/>
+                                                            <i class="fa fa-search-plus"></i>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- /.table-responsive -->
+                                        </div>
+                                        <!-- /.col-lg-8 -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <!-- /.col-lg-8 -->
+                        <div class="col-lg-4">
+                            <div id="chartPie" style="height: 370px; width: 100%;"></div>
+                        </div>
+                        <!-- /.col-lg-4 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="../../../js/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../../js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../../../js/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../../../js/startmin.js"></script>
+        
+        <!-- stats -->
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        
+        
+        <script>
+            window.onload = function() {
+                
+                var chartVentas = new CanvasJS.Chart("chartContainer", {
+                    theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    animationEnabled: true,
+                    title:{
+                            text: "Ventas totales Resencia.com"   
+                    },
+                    axisX: {
+                            interval: 1,
+                            intervalType: "month",
+                            valueFormatString: "MMM"
+                    },
+                    axisY:{
+                            title: "Price (in USD)",
+                            includeZero: true,
+                            valueFormatString: "$#0"
+                    },
+                    data: [{        
+                            type: "line",
+                            markerSize: 12,
+                            xValueFormatString: "MMM, YYYY",
+                            yValueFormatString: "$###.#",
+                            dataPoints: [        
+                                    { x: new Date(2016, 00, 1), y: 61 },
+                                    { x: new Date(2016, 01, 1), y: 71, },
+                                    { x: new Date(2016, 02, 1) , y: 55},
+                                    { x: new Date(2016, 03, 1) , y: 50 },
+                                    { x: new Date(2016, 04, 1) , y: 65},
+                                    { x: new Date(2016, 05, 1) , y: 85},
+                                    { x: new Date(2016, 06, 1) , y: 68},
+                                    { x: new Date(2016, 07, 1) , y: 28},
+                                    { x: new Date(2016, 08, 1) , y: 34},
+                                    { x: new Date(2016, 09, 1) , y: 24},
+                                    { x: new Date(2016, 10, 1) , y: 44},
+                                    { x: new Date(2016, 11, 1) , y: 34}
+                            ]
+                    }]
+            });
+            chartVentas.render();
+                
+                
+                var chart = new CanvasJS.Chart("chartPie", {
+                        theme: "light1", // "light1", "light2", "dark1", "dark2"
+                        exportEnabled: true,
+                        animationEnabled: true,
+                        title: {
+                                text: "Clientes por servicio"
+                        },
+                        data: [{
+                                type: "pie",
+                                startAngle: 25,
+                                toolTipContent: "<b>{label}</b>: {y}%",
+                                showInLegend: "true",
+                                legendText: "{label}",
+                                indexLabelFontSize: 16,
+                                indexLabel: "{label} - {y}%",
+                                dataPoints: [
+                                        { y: 50.00, label: "Tienda Online" },
+                                        { y: 25.00, label: "App Android" },
+                                        { y: 10.62, label: "Web / Portfolio" },
+                                        { y: 5.02, label: "CRM / ERP" },
+                                        { y: 4.07, label: "Software a medida" },
+                                        { y: 1.22, label: "Mantenimiento" }
+                                        
+                                ]
+                        }]
+                });
+                chart.render();
+
+                }
+        </script>
+        
+        
+
+    </body>
+</html>
