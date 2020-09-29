@@ -10,4 +10,5 @@ import com.resencia.backoffice.app.Personal.Dominio.RolesResencia;
 
 public interface ServiceRoles {
     public void saveRol(RolesResencia r);
+    public boolean delete(int id);
 }

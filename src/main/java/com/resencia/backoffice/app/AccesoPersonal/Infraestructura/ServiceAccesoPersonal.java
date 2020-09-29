@@ -14,4 +14,5 @@ import com.resencia.backoffice.app.AccesoPersonal.Dominio.AccesoPersonalResencia
 public interface ServiceAccesoPersonal {
     public AccesoPersonalResencia loadByUsername(String username);
     public boolean save(AccesoPersonalResencia a);
+    public boolean delete(int id);
 }

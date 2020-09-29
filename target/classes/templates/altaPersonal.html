@@ -60,15 +60,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Apellido personal</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" th:field="*{apellidoPersonal}" type="text">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>E-mail personal</label>
-                                                    <input class="form-control" type="e-mail">
+                                                    <input class="form-control" type="text" th:field="*{emailPersonal}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Telefono personal</label>
-                                                    <input class="form-control">
+                                                    <input class="form-control" th:field="*{telefono}" type="text">
                                                 </div>
                                                 <div th:object="${acceso}">
                                                     <div class="form-group">

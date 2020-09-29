@@ -46,5 +46,16 @@ public class ServiceAccesoPersonalPostgre implements ServiceAccesoPersonal{
             return false;
         }
     }
+
+    @Override
+    public boolean delete(int id) {
+        try{
+            dao.deleteById(id);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
     
 }

@@ -8,6 +8,7 @@ package com.resencia.backoffice.app.AccesoPersonal.Dominio;
 import com.resencia.backoffice.app.Personal.Dominio.PersonalResencia;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class AccesoPersonalResencia implements Serializable {
     @Column(name = "password_personal")
     private String passwordPersonal;
     @JoinColumn(name = "idpersonal", referencedColumnName = "idpersonal")
-    @ManyToOne
+    @ManyToOne()
     private PersonalResencia idpersonal;
 
     public AccesoPersonalResencia() {
