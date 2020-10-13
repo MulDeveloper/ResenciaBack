@@ -16,4 +16,5 @@ public interface ServicePersonal {
     public PersonalResencia getById(int id);
     public PersonalResencia save(PersonalResencia p);
     public boolean delById(int id);
+    public PersonalResencia findByUsername(String username);
 }

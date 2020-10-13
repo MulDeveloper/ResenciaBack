@@ -7,6 +7,7 @@ package com.resencia.backoffice.app.Personal.Aplicacion;
 
 import com.resencia.backoffice.app.AccesoPersonal.Dominio.AccesoPersonalResencia;
 import com.resencia.backoffice.app.AccesoPersonal.Infraestructura.ServiceAccesoPersonal;
+import com.resencia.backoffice.app.Auth.Auth;
 import com.resencia.backoffice.app.Personal.Dominio.PersonalResencia;
 import com.resencia.backoffice.app.Personal.Dominio.RolesResencia;
 import com.resencia.backoffice.app.Personal.Infraestructura.ServicePersonal;
@@ -39,6 +40,9 @@ public class PersonalController {
     
     @Autowired
     private BCryptPasswordEncoder bcrypt;
+    
+    @Autowired
+    private Auth auth;
     
     @GetMapping("/alta")
     public String loadViewAlta(Model m){
@@ -88,4 +92,43 @@ public class PersonalController {
  
         return "index";
     }
+    
+    
+    @GetMapping("/ownerEdit/{username}")
+    public String editData(Model m, @PathVariable String username){
+        // check if the user is the same user that we are trying to change
+        
+        if(auth.getAuthentication().getName().equals(username)){
+            //we get the objects and we pass it to te view
+            AccesoPersonalResencia acceso = serviceAcceso.loadByUsername(username);
+            PersonalResencia p = servicePersonal.findByUsername(username);
+            
+            
+            m.addAttribute("personal", p);
+            m.addAttribute("acceso", acceso);
+            return "editAdmin"; 
+        }
+        else{
+            return "redirect:/";
+        }
+    }
+    
+    @PostMapping("/update")
+    public String updatePersonal(@ModelAttribute("personal") PersonalResencia personal,
+            @ModelAttribute(name="password") AccesoPersonalResencia acceso){
+        
+        
+        PersonalResencia p = servicePersonal.save(personal);
+        
+        // se ecnripta la password y se modifica el acceso
+        acceso.setPasswordPersonal(bcrypt.encode(acceso.getPasswordPersonal()));
+        acceso.setIdpersonal(p);
+        serviceAcceso.save(acceso);
+        
+        
+        return "index";
+        
+    }
+    
+    
 }

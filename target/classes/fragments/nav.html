@@ -18,7 +18,7 @@
                             <i class="fa fa-user fa-fw"></i><span sec:authentication="name"></span><b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Opciones usuario</a>
+                            <li><a th:href="@{'/v0/personal/ownerEdit/' + ${#authentication.name}}"><i class="fa fa-gear fa-fw"></i> Opciones usuario</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -41,10 +41,10 @@
                                 <a href="#"><i class="fa fa-users"></i> Clientes<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Alta clientes</a>
+                                        <a href="/v0/clients/add">Alta clientes</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html">Lista clientes</a>
+                                        <a href="/v0/clients/">Lista clientes</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->

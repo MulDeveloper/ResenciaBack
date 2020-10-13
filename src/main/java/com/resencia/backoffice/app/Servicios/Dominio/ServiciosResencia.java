@@ -5,6 +5,7 @@
  */
 package com.resencia.backoffice.app.Servicios.Dominio;
 
+import com.resencia.backoffice.app.Cliente.Dominio.ClientesResencia;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
