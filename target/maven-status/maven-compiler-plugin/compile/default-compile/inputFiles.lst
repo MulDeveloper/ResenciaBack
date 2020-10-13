@@ -1,7 +1,9 @@
+C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Cliente\Dominio\ClientesResencia.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\MvcConfiguration.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Security\SecurityConfig.java
-C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Servicios\Dominio\ClientesResencia.java
+C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Cliente\Infraestructure\ClienteRepository.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Dominio\RolesResencia.java
+C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Cliente\Aplicacion\ControllerCliente.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\AccesoPersonal\Infraestructura\ServiceAccesoPersonal.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Login\LoginController.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\LogListener.java
@@ -9,6 +11,7 @@ C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resenci
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\ResenciaBackoffice.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Infraestructura\ServiceRoles.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Aplicacion\PersonalController.java
+C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Cliente\Infraestructure\ServiceClientePostgre.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Infraestructura\DAOPersonalResencia.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Infraestructura\ServicePersonal.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Servicios\Infraestructura\DAOServicio.java
@@ -22,6 +25,7 @@ C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resenci
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Servicios\Dominio\ServiciosResencia.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Auth\AuthImpl.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\AccesoPersonal\Infraestructura\DAOAccesoPersonal.java
+C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Cliente\Infraestructure\ServiceCliente.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Infraestructura\DAORoles.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Personal\Infraestructura\ServicePersonalPostgre.java
 C:\Users\bunn3\Documents\NetBeansProjects\ResenciaBack\src\main\java\com\resencia\backoffice\app\Servicios\Infraestructura\ServiceServicios.java
