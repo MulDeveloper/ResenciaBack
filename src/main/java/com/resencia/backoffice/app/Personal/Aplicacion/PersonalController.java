@@ -93,6 +93,14 @@ public class PersonalController {
         return "index";
     }
     
+    @GetMapping("/adminlist")
+    public String loadViewAdminList(Model m){
+
+        m.addAttribute("title", "Lista Administradores");
+        m.addAttribute("listaadmin", servicePersonal.listAll());
+        return "list_admin";
+    }
+    
     
     @GetMapping("/ownerEdit/{username}")
     public String editData(Model m, @PathVariable String username){
