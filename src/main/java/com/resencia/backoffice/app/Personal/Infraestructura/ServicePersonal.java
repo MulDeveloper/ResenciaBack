@@ -6,7 +6,6 @@
 package com.resencia.backoffice.app.Personal.Infraestructura;
 
 import com.resencia.backoffice.app.Personal.Dominio.PersonalResencia;
-import java.util.List;
 
 /**
  *
@@ -17,5 +16,5 @@ public interface ServicePersonal {
     public PersonalResencia getById(int id);
     public PersonalResencia save(PersonalResencia p);
     public boolean delById(int id);
-    public List <PersonalResencia> listAll();
+    public PersonalResencia findByUsername(String username);
 }
