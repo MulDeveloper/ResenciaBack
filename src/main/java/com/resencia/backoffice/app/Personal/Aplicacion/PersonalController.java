@@ -101,6 +101,8 @@ public class PersonalController {
         return "list_admin";
     }
     
+    //personal cambio dprueba
+    
     
     @GetMapping("/ownerEdit/{username}")
     public String editData(Model m, @PathVariable String username){
