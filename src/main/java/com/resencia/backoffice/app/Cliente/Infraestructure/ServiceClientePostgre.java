@@ -18,8 +18,6 @@ public class ServiceClientePostgre implements ServiceCliente{
         this.repo = repo;
     }
     
-    
-
     @Override
     public ClientesResencia add(ClientesResencia cliente) {
         return this.repo.save(cliente);

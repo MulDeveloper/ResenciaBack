@@ -4,6 +4,7 @@ package com.resencia.backoffice.app.Personal.Infraestructura;
 import com.resencia.backoffice.app.AccesoPersonal.Dominio.AccesoPersonalResencia;
 import com.resencia.backoffice.app.AccesoPersonal.Infraestructura.ServiceAccesoPersonal;
 import com.resencia.backoffice.app.Personal.Dominio.PersonalResencia;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -47,6 +48,11 @@ public class ServicePersonalPostgre implements ServicePersonal{
         AccesoPersonalResencia acceso = serviceAcceso.loadByUsername(username);
         return acceso.getIdpersonal();
         
+    }
+    
+    @Override
+    public List<PersonalResencia> listAll() {
+        return dao.findAll();
     }
 
    
