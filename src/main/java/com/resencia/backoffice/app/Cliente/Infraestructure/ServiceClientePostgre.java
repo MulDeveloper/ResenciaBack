@@ -40,5 +40,10 @@ public class ServiceClientePostgre implements ServiceCliente{
             return false;
         }
     }
+
+    @Override
+    public ClientesResencia getOne(int id) {
+        return this.repo.getOne(id);
+    }
     
 }

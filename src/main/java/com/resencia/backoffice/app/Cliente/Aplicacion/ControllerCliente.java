@@ -55,10 +55,23 @@ public class ControllerCliente {
         return "altaCliente";
     }
     
+    
+    @GetMapping("/edit/{id}")
+    public String editClient(@PathVariable("id") Integer id, Model m){
+        //we get the client and populate de form
+        
+        ClientesResencia cliente = this.service.getOne(id);
+        m.addAttribute("title", "Editar " + cliente.getNombreCliente() + " " + cliente.getApellidoCliente());
+        m.addAttribute("cliente", cliente);
+        
+        return "editCliente";
+    }
+    
+    
     @PostMapping("/add")
     public String persistClient(@ModelAttribute("cliente") ClientesResencia cliente){
         this.service.add(cliente);
-        return "OK";
+        return "redirect:/v0/clients/";
     }
     
 }
