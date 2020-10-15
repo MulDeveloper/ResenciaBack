@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link href="../css/styleLogin.css" rel="stylesheet">
-    <script src="../js/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <title>Login Resencia Backoffice</title>
+        <link href="../css/styleLogin.css" rel="stylesheet">
+         <!-- Bootstrap Core CSS -->
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="../js/jquery.min.js"></script>
+        <div class="alert alert-danger" th:if="${error != null}"
+            th:text="${error}" th:align="center">
+
+        </div>
   </head>
   <body>
 
@@ -12,8 +19,9 @@
           <h1>Login Resencia Backoffice</h1>
 
           <div class="txtb">
-            <input type="text" name="username" autofocus>
-            <span data-placeholder="Nombre de usuario"></span>
+              <input th:if="${error != null}" th:value="${username}" type="text" id="username" name="username" autofocus="true"/>
+            <input th:unless="${error != null}" type="text" id="username" name="username" autofocus="true"/>
+            <span th:unless="${error != null}" data-placeholder="Nombre de usuario"></span>
           </div>
 
           <div class="txtb">

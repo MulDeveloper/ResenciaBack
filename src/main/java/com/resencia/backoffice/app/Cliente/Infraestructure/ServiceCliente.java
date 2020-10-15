@@ -13,4 +13,5 @@ public interface ServiceCliente {
     public ClientesResencia add(ClientesResencia cliente);
     public List<ClientesResencia> list();
     public boolean delete(int id);
+    public ClientesResencia getOne(int id);
 }
