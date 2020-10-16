@@ -17,5 +17,7 @@ public interface ServiceServicios {
     
     public ServiciosResencia save(ServiciosResencia servicio);
     
+    public ServiciosResencia getOne(int id);
+    
     
 }
