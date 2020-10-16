@@ -56,12 +56,19 @@
                                                 <div class="form-group">
                                                     <label>Cliente asociado</label>
                                                     <select class="form-control" th:field="*{idcliente}">
-                                                        <option th:each="cliente: ${clientes}" th:value="${cliente}" th:text="${cliente.nombreCliente + ' ' + cliente.apellidoCliente}"/>
+                                                        <option th:each="cliente: ${clientes}" th:value="${cliente.idcliente}" th:text="${cliente.nombreCliente + ' ' + cliente.apellidoCliente}"/>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Descripcion</label>
-                                                    <input class="form-control">
+                                                    <select class="form-control" th:field="*{descripcion}">
+                                                        <option th:value="${'WEB'}" th:text="${'WEB PORTFOLIO'}"/>
+                                                        <option th:value="${'TIENDA'}" th:text="${'TIENDA ONLINE'}"/>
+                                                        <option th:value="${'APP'}" th:text="${'APP ANDROID'}"/>
+                                                        <option th:value="${'A MEDIDA'}" th:text="${'SOFTWARE A MEDIDA'}"/>
+                                                        <option th:value="${'CRM'}" th:text="${'CRM / ERP'}"/>
+                                                        <option th:value="${'MANTENIMIENTO'}" th:text="${'MANTENIMIENTO'}"/>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Precio</label>
