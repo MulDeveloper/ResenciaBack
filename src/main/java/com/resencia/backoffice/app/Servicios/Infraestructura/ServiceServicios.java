@@ -15,5 +15,7 @@ import java.util.List;
 public interface ServiceServicios {
     public List<ServiciosResencia> listar();
     
+    public ServiciosResencia save(ServiciosResencia servicio);
+    
     
 }
