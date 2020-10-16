@@ -21,4 +21,9 @@ public class ServiceServiciosPostgre implements ServiceServicios{
         return dao.findAll();
     }
     
+    @Override
+    public ServiciosResencia save(ServiciosResencia servicio) {
+        return dao.save(servicio);
+    }
+    
 }
