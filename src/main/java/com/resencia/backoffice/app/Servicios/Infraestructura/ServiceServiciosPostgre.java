@@ -25,5 +25,10 @@ public class ServiceServiciosPostgre implements ServiceServicios{
     public ServiciosResencia save(ServiciosResencia servicio) {
         return dao.save(servicio);
     }
+
+    @Override
+    public ServiciosResencia getOne(int id) {
+        return dao.getOne(id);
+    }
     
 }

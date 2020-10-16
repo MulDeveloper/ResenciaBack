@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -54,12 +55,15 @@ public class ServiciosResencia implements Serializable {
     private BigInteger precio;
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaAlta;
     @Column(name = "fecha_entrega")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaEntrega;
     @Column(name = "fecha_pago")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaPago;
     @Column(name = "estado_pago")
     private Boolean estadoPago;

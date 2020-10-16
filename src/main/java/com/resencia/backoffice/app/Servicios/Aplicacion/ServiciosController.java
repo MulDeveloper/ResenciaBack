@@ -40,6 +40,7 @@ public class ServiciosController {
     public ModelAndView listServices(){
         ModelAndView mav = new ModelAndView("servicesTables");
         List <ServiciosResencia> lista = this.service.listar();
+        mav.addObject("title", "Lista de servicios");
         mav.addObject("servicios", lista);
         return mav;
     }
@@ -67,15 +68,12 @@ public class ServiciosController {
 
     @PostMapping("/add")
     public String addServicio(@ModelAttribute("servicio") ServiciosResencia servicio){
+       
+      
         
-        
-        
+        ServiciosResencia s = service.save(servicio);
 
-        System.out.println(servicio.getIdcliente().getNombreCliente());
-        
-        //ServiciosResencia p = service.save(servicio);
-
-        return "servicesTables";
+        return "redirect:/v0/servicios/lista";
 
     }
 
