@@ -31,7 +31,8 @@ import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
     @NamedQuery(name = "CredencialesServicio.findByUserFtp", query = "SELECT c FROM CredencialesServicio c WHERE c.userFtp = :userFtp"),
     @NamedQuery(name = "CredencialesServicio.findByPassFtp", query = "SELECT c FROM CredencialesServicio c WHERE c.passFtp = :passFtp"),
     @NamedQuery(name = "CredencialesServicio.findByIp", query = "SELECT c FROM CredencialesServicio c WHERE c.ip = :ip"),
-    @NamedQuery(name = "CredencialesServicio.findByPassSsh", query = "SELECT c FROM CredencialesServicio c WHERE c.passSsh = :passSsh")})
+    @NamedQuery(name = "CredencialesServicio.findByPassSsh", query = "SELECT c FROM CredencialesServicio c WHERE c.passSsh = :passSsh"),
+    @NamedQuery(name = "CredencialesServicio.findByService", query = "SELECT c FROM CredencialesServicio c WHERE c.idservicio.idservicio = :id")})
 public class CredencialesServicio implements Serializable {
 
     private static final long serialVersionUID = 1L;
