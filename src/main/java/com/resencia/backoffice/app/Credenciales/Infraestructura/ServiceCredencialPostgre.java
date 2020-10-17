@@ -42,5 +42,18 @@ public class ServiceCredencialPostgre implements ServiceCredencial{
             return false;
         }
     }
+
+    @Override
+    public CredencialesServicio getOne(int id) {
+        try{
+            Query q = em.createNamedQuery("CredencialesServicio.findByService")
+                    .setParameter("id", id);
+            CredencialesServicio c = (CredencialesServicio) q.getSingleResult();
+            return c;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
     
 }

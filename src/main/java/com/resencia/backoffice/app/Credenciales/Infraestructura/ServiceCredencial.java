@@ -15,4 +15,5 @@ import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
 public interface ServiceCredencial {
     public void save(CredencialesServicio credencial);
     public boolean hasCredential(ServiciosResencia servicio);
+    public CredencialesServicio getOne(int id);
 }

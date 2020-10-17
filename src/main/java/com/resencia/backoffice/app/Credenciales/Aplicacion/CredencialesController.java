@@ -10,10 +10,7 @@ import com.resencia.backoffice.app.Credenciales.Dominio.CredencialesServicio;
 import com.resencia.backoffice.app.Credenciales.Infraestructura.ServiceCredencial;
 import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
 import com.resencia.backoffice.app.Servicios.Infraestructura.ServiceServicios;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
-
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +28,9 @@ public class CredencialesController {
         this.serviceServicios = serviceServicios;
         this.serviceCredencial = serviceCredencial;
     }
+    
+
+    
 
     
     @GetMapping("/alta/{idservicio}")
@@ -40,12 +40,12 @@ public class CredencialesController {
         
         ServiciosResencia servicio = serviceServicios.getOne(idservicio);
         
+        //if that services has credentials we go back
         if(serviceCredencial.hasCredential(servicio)){
             //the services has credentials we go back
             return "redirect:/v0/servicios/lista";
         }
         
-        //if that services has credentials we go back
         
         m.addAttribute("title", "Alta nueva credencial");
         
@@ -64,6 +64,51 @@ public class CredencialesController {
     
     @PostMapping("/add")
     public String save(@ModelAttribute("credencial") CredencialesServicio credencial){
+        
+        //we have to encrypt the passwords and store it
+        
+        
+        this.serviceCredencial.save(credencial);
+        
+        return "redirect:/v0/servicios/lista";
+    }
+    
+    @GetMapping("/get/{id}")
+    public String getCredentials(@PathVariable("id") Integer id,Model m){
+        //we get the credential to that service
+        
+        CredencialesServicio c = this.serviceCredencial.getOne(id);
+        
+        //we decrypt the password
+       
+        
+        if(c == null){
+            return "redirect:/v0/servicios/lista";
+        }
+        
+        m.addAttribute("title", "Credencial");
+        m.addAttribute("credencial", c);
+        return "showCredential";
+    }
+    
+    @GetMapping("/edit/{id}")
+    public String getEditCredential(@PathVariable("id") Integer id,Model m){
+         //we get the credential to that service
+        
+        CredencialesServicio c = this.serviceCredencial.getOne(id);
+        
+        
+        if(c == null){
+            return "redirect:/v0/servicios/lista";
+        }
+        
+        m.addAttribute("title", "Credencial");
+        m.addAttribute("credencial", c);
+        return "editCredential";
+    }
+    
+    @PostMapping("/edit")
+    public String editCredential(@ModelAttribute("credencial") CredencialesServicio credencial){
         
         this.serviceCredencial.save(credencial);
         
