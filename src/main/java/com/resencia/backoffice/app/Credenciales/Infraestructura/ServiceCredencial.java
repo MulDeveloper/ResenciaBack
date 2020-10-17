@@ -6,6 +6,7 @@
 package com.resencia.backoffice.app.Credenciales.Infraestructura;
 
 import com.resencia.backoffice.app.Credenciales.Dominio.CredencialesServicio;
+import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
 
 /**
  *
@@ -13,4 +14,5 @@ import com.resencia.backoffice.app.Credenciales.Dominio.CredencialesServicio;
  */
 public interface ServiceCredencial {
     public void save(CredencialesServicio credencial);
+    public boolean hasCredential(ServiciosResencia servicio);
 }
