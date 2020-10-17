@@ -89,8 +89,8 @@
                                                      </div>
                                                     <td class="center">
                                                         <a th:href="${'/v0/credenciales/alta/' + servicio.idservicio }"><button type="button" name="button" class="btn btn-success ">Insertar</button></a>
-                                                        <button type="button" name="button" class="btn btn-info">Ver</button>
-                                                        <a href="#"><button type="button" name="button" class="btn btn-warning ml-2">Editar</button></a>
+                                                        <a th:href="${'/v0/credenciales/get/' + servicio.idservicio }"><button type="button" name="button" class="btn btn-info">Ver</button></a>
+                                                        <a th:href="${'/v0/credenciales/edit/' + servicio.idservicio }"><button type="button" name="button" class="btn btn-warning ml-2">Editar</button></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
