@@ -77,7 +77,7 @@ and open the template in the editor.
                                                     <td th:text="${cliente.telefonoCliente}"></td>
                                                     <td th:text="${cliente.poblacionCliente}"></td>
                                                     <td>
-                                                        <button type="button" name="button" class="btn btn-info ">Servicios</button>
+                                                        <a th:href="${'/v0/servicios/listByClient/' + cliente.idcliente }"><button type="button" name="button" class="btn btn-info ">Servicios</button></a>
                                                         <a th:href="${'/v0/clients/edit/' + cliente.idcliente }"><button type="button" name="button" class="btn btn-warning ml-2">Editar</button></a>
                                                         <a th:href="${'/v0/clients/del/' + cliente.idcliente }"><button type="button" name="button" class="btn btn-danger ml-2">Eliminar ❌</button></a>
                                                     </td>

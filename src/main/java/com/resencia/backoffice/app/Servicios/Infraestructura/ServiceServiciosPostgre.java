@@ -7,14 +7,19 @@ package com.resencia.backoffice.app.Servicios.Infraestructura;
 
 import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.EntityManager;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceServiciosPostgre implements ServiceServicios{
     
-    @Autowired
-    private DAOServicio dao;
+    private final DAOServicio dao;
+
+    public ServiceServiciosPostgre(DAOServicio dao) {
+        this.dao = dao;
+    }
+
+
 
     @Override
     public List<ServiciosResencia> listar() {
@@ -30,5 +35,7 @@ public class ServiceServiciosPostgre implements ServiceServicios{
     public ServiciosResencia getOne(int id) {
         return dao.getOne(id);
     }
+
+ 
     
 }

@@ -52,15 +52,10 @@ public class ServiciosController {
         m.addAttribute("title", "Alta servicio");
         m.addAttribute("servicio", servicio);
        
-        
         //list all the clients to populate the select
         
         List <ClientesResencia> listaClientes = this.serviceCliente.list();
         m.addAttribute("clientes", listaClientes);
-        
-        
-        
-        
 
         return "altaServicio";
     }
@@ -68,13 +63,19 @@ public class ServiciosController {
 
     @PostMapping("/add")
     public String addServicio(@ModelAttribute("servicio") ServiciosResencia servicio){
-       
-      
-        
         ServiciosResencia s = service.save(servicio);
-
         return "redirect:/v0/servicios/lista";
 
+    }
+    
+    @GetMapping("/listByClient/{idcliente}")
+    public String getServicesByClient(Model m, @PathVariable("idcliente") Integer id){
+        //we list all the services related to that client
+        
+        ClientesResencia c = this.serviceCliente.getOne(id);
+        m.addAttribute("servicios", c.getServiciosResenciaList());
+        
+        return "servicesTables";
     }
 
 
