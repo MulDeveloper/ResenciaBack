@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -47,6 +48,7 @@ public class TicketSoporte implements Serializable {
     private Integer idticket;
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaAlta;
     @Column(name = "descripcion")
     private String descripcion;

@@ -12,16 +12,17 @@ package com.resencia.backoffice.app.Tickets.Dominio;
 public class FormTicket {
     private String nif;
     private String telefono;
-    private String poblacion;
 
     public FormTicket() {
     }
 
-    public FormTicket(String nif, String telefono, String poblacion) {
+    public FormTicket(String nif, String telefono) {
         this.nif = nif;
         this.telefono = telefono;
-        this.poblacion = poblacion;
     }
+    
+    
+
 
     public String getNif() {
         return nif;
@@ -39,13 +40,6 @@ public class FormTicket {
         this.telefono = telefono;
     }
 
-    public String getPoblacion() {
-        return poblacion;
-    }
-
-    public void setPoblacion(String poblacion) {
-        this.poblacion = poblacion;
-    }
     
     
 }
