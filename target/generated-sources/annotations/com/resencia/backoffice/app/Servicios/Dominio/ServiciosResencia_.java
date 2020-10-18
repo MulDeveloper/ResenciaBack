@@ -1,9 +1,11 @@
 package com.resencia.backoffice.app.Servicios.Dominio;
 
 import com.resencia.backoffice.app.Cliente.Dominio.ClientesResencia;
+import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -15,6 +17,7 @@ public abstract class ServiciosResencia_ {
 	public static volatile SingularAttribute<ServiciosResencia, BigInteger> precio;
 	public static volatile SingularAttribute<ServiciosResencia, Date> fechaAlta;
 	public static volatile SingularAttribute<ServiciosResencia, Date> fechaEntrega;
+	public static volatile ListAttribute<ServiciosResencia, TicketSoporte> ticketSoporteList;
 	public static volatile SingularAttribute<ServiciosResencia, Boolean> estadoPago;
 	public static volatile SingularAttribute<ServiciosResencia, ClientesResencia> idcliente;
 	public static volatile SingularAttribute<ServiciosResencia, Integer> idservicio;

@@ -6,6 +6,7 @@
     <class>com.resencia.backoffice.app.Credenciales.Dominio.CredencialesServicio</class>
     <class>com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia</class>
     <class>com.resencia.backoffice.app.Cliente.Dominio.ClientesResencia</class>
+    <class>com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
