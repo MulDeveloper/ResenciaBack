@@ -8,6 +8,7 @@ package com.resencia.backoffice.app.Credenciales.Aplicacion;
 import org.springframework.stereotype.Controller;
 import com.resencia.backoffice.app.Credenciales.Dominio.CredencialesServicio;
 import com.resencia.backoffice.app.Credenciales.Infraestructura.ServiceCredencial;
+import com.resencia.backoffice.app.Security.Crypto;
 import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
 import com.resencia.backoffice.app.Servicios.Infraestructura.ServiceServicios;
 import org.springframework.ui.Model;
@@ -23,11 +24,15 @@ public class CredencialesController {
     
     private final ServiceServicios serviceServicios;
     private final ServiceCredencial serviceCredencial;
+    private final Crypto crypto;
 
-    public CredencialesController(ServiceServicios serviceServicios, ServiceCredencial serviceCredencial) {
+    public CredencialesController(ServiceServicios serviceServicios, ServiceCredencial serviceCredencial, Crypto crypto) {
         this.serviceServicios = serviceServicios;
         this.serviceCredencial = serviceCredencial;
+        this.crypto = crypto;
     }
+
+    
     
 
     
@@ -67,6 +72,10 @@ public class CredencialesController {
         
         //we have to encrypt the passwords and store it
         
+        credencial.setPasswordCms(this.crypto.encrypt(credencial.getPasswordCms()));
+        credencial.setPassFtp(this.crypto.encrypt(credencial.getPassFtp()));
+        credencial.setPassSsh(this.crypto.encrypt(credencial.getPassSsh()));
+        
         
         this.serviceCredencial.save(credencial);
         
@@ -78,13 +87,16 @@ public class CredencialesController {
         //we get the credential to that service
         
         CredencialesServicio c = this.serviceCredencial.getOne(id);
-        
-        //we decrypt the password
-       
-        
+
         if(c == null){
             return "redirect:/v0/servicios/lista";
         }
+        
+        //we decrypt the password
+        
+        c.setPasswordCms(this.crypto.decrypt(c.getPasswordCms()));
+        c.setPassFtp(this.crypto.decrypt(c.getPassFtp()));
+        c.setPassSsh(this.crypto.decrypt(c.getPassSsh()));
         
         m.addAttribute("title", "Credencial");
         m.addAttribute("credencial", c);
@@ -97,10 +109,15 @@ public class CredencialesController {
         
         CredencialesServicio c = this.serviceCredencial.getOne(id);
         
-        
         if(c == null){
             return "redirect:/v0/servicios/lista";
         }
+        
+        //we decrypt the password
+        
+        c.setPasswordCms(this.crypto.decrypt(c.getPasswordCms()));
+        c.setPassFtp(this.crypto.decrypt(c.getPassFtp()));
+        c.setPassSsh(this.crypto.decrypt(c.getPassSsh()));
         
         m.addAttribute("title", "Credencial");
         m.addAttribute("credencial", c);
@@ -110,9 +127,16 @@ public class CredencialesController {
     @PostMapping("/edit")
     public String editCredential(@ModelAttribute("credencial") CredencialesServicio credencial){
         
+        //we have to encrypt the passwords and store it
+        
+        credencial.setPasswordCms(this.crypto.encrypt(credencial.getPasswordCms()));
+        credencial.setPassFtp(this.crypto.encrypt(credencial.getPassFtp()));
+        credencial.setPassSsh(this.crypto.encrypt(credencial.getPassSsh()));
+        
         this.serviceCredencial.save(credencial);
         
         return "redirect:/v0/servicios/lista";
     }
+    
     
 }
