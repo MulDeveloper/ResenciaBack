@@ -1,6 +1,7 @@
 package com.resencia.backoffice.app.Cliente.Dominio;
 
 import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
+import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -17,6 +18,7 @@ public abstract class ClientesResencia_ {
 	public static volatile SingularAttribute<ClientesResencia, String> apellidoCliente;
 	public static volatile SingularAttribute<ClientesResencia, String> telefonoCliente;
 	public static volatile SingularAttribute<ClientesResencia, String> direccionCliente;
+	public static volatile ListAttribute<ClientesResencia, TicketSoporte> ticketSoporteList;
 	public static volatile SingularAttribute<ClientesResencia, Integer> idcliente;
 	public static volatile SingularAttribute<ClientesResencia, String> poblacionCliente;
 
