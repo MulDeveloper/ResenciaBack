@@ -6,6 +6,7 @@
 package com.resencia.backoffice.app.Cliente.Dominio;
 
 import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
+import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -39,6 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ClientesResencia.findByDireccionCliente", query = "SELECT c FROM ClientesResencia c WHERE c.direccionCliente = :direccionCliente"),
     @NamedQuery(name = "ClientesResencia.findByPoblacionCliente", query = "SELECT c FROM ClientesResencia c WHERE c.poblacionCliente = :poblacionCliente")})
 public class ClientesResencia implements Serializable {
+
+    @OneToMany(mappedBy = "idcliente")
+    private List<TicketSoporte> ticketSoporteList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -166,6 +170,15 @@ public class ClientesResencia implements Serializable {
     @Override
     public String toString() {
         return "com.resencia.backoffice.app.Servicios.Dominio.ClientesResencia[ idcliente=" + idcliente + " ]";
+    }
+
+    @XmlTransient
+    public List<TicketSoporte> getTicketSoporteList() {
+        return ticketSoporteList;
+    }
+
+    public void setTicketSoporteList(List<TicketSoporte> ticketSoporteList) {
+        this.ticketSoporteList = ticketSoporteList;
     }
     
 }

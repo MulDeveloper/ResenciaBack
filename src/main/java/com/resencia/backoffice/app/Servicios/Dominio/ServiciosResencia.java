@@ -6,9 +6,11 @@
 package com.resencia.backoffice.app.Servicios.Dominio;
 
 import com.resencia.backoffice.app.Cliente.Dominio.ClientesResencia;
+import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,10 +21,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -43,6 +47,9 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "ServiciosResencia.findByEstadoPago", query = "SELECT s FROM ServiciosResencia s WHERE s.estadoPago = :estadoPago"),
     @NamedQuery(name = "ServiciosResencia.lastTen", query = "SELECT s FROM ServiciosResencia s ORDER BY s.fechaAlta DESC")})
 public class ServiciosResencia implements Serializable {
+
+    @OneToMany(mappedBy = "idservicio")
+    private List<TicketSoporte> ticketSoporteList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -166,6 +173,15 @@ public class ServiciosResencia implements Serializable {
     @Override
     public String toString() {
         return "com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia[ idservicio=" + idservicio + " ]";
+    }
+
+    @XmlTransient
+    public List<TicketSoporte> getTicketSoporteList() {
+        return ticketSoporteList;
+    }
+
+    public void setTicketSoporteList(List<TicketSoporte> ticketSoporteList) {
+        this.ticketSoporteList = ticketSoporteList;
     }
     
 }
