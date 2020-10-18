@@ -14,4 +14,5 @@ public interface ServiceCliente {
     public List<ClientesResencia> list();
     public boolean delete(int id);
     public ClientesResencia getOne(int id);
+    public ClientesResencia getByNif(String nif);
 }
