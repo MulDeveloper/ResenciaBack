@@ -75,11 +75,11 @@ public class PersonalController {
         rol.setUserid(p);
         serviceRoles.saveRol(rol);
         
-        return "index";
+        return "redirect:/v0/personal/adminlist";
         
     }
     
-    @DeleteMapping("/del/{id}")
+    @GetMapping("/del/{id}")
     public String delPersonal(@PathVariable Integer id){
         //logica de baja
         /*
@@ -90,7 +90,7 @@ public class PersonalController {
 
         //retornamos lista de personal
  
-        return "index";
+        return "redirect:/v0/personal/adminlist";
     }
     
     @GetMapping("/adminlist")
