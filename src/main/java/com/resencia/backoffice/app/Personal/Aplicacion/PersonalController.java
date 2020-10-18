@@ -16,14 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/v0/personal")
@@ -63,6 +60,12 @@ public class PersonalController {
     public String addPersonal(@ModelAttribute("personal") PersonalResencia personal,
             @ModelAttribute(name="password") AccesoPersonalResencia acceso,
             @ModelAttribute(name="rol") RolesResencia rol){
+        
+        //check if the username exist
+        
+        if(serviceAcceso.existUsername(acceso.getUsername())){
+            return "redirect:/v0/personal/adminlist";
+        }
         
         PersonalResencia p = servicePersonal.save(personal);
         

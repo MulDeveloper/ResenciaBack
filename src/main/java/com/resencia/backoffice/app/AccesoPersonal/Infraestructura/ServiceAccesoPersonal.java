@@ -15,4 +15,5 @@ public interface ServiceAccesoPersonal {
     public AccesoPersonalResencia loadByUsername(String username);
     public boolean save(AccesoPersonalResencia a);
     public boolean delete(int id);
+    public boolean existUsername(String username);
 }
