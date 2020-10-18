@@ -40,7 +40,8 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "ServiciosResencia.findByFechaAlta", query = "SELECT s FROM ServiciosResencia s WHERE s.fechaAlta = :fechaAlta"),
     @NamedQuery(name = "ServiciosResencia.findByFechaEntrega", query = "SELECT s FROM ServiciosResencia s WHERE s.fechaEntrega = :fechaEntrega"),
     @NamedQuery(name = "ServiciosResencia.findByFechaPago", query = "SELECT s FROM ServiciosResencia s WHERE s.fechaPago = :fechaPago"),
-    @NamedQuery(name = "ServiciosResencia.findByEstadoPago", query = "SELECT s FROM ServiciosResencia s WHERE s.estadoPago = :estadoPago")})
+    @NamedQuery(name = "ServiciosResencia.findByEstadoPago", query = "SELECT s FROM ServiciosResencia s WHERE s.estadoPago = :estadoPago"),
+    @NamedQuery(name = "ServiciosResencia.lastTen", query = "SELECT s FROM ServiciosResencia s ORDER BY s.fechaAlta DESC")})
 public class ServiciosResencia implements Serializable {
 
     private static final long serialVersionUID = 1L;

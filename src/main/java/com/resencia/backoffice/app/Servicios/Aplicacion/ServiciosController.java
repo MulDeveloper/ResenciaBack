@@ -68,6 +68,16 @@ public class ServiciosController {
 
     }
     
+    @GetMapping("/getOne/{id}")
+    public String getOne(Model m, @PathVariable("id") Integer id){
+        //we list the service
+        m.addAttribute("servicios", service.getOne(id));
+        return "servicesTables";
+    }
+
+    
+    
+    
     @GetMapping("/listByClient/{idcliente}")
     public String getServicesByClient(Model m, @PathVariable("idcliente") Integer id){
         //we list all the services related to that client

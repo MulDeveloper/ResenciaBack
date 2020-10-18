@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Resencia </title>
+        <title th:text="${title}"></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
@@ -157,24 +157,16 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>10/08/2020</td>
-                                                        <td>Tienda Online</td>
-                                                        <td>450€</td>
+                                                    <tr th:each="servicio : ${ultimosServicios}">
+                                                        <td th:text="${servicio.idservicio}"></td>
+                                                        <td th:text="${servicio.fechaAlta}"></td>
+                                                        <td th:text="${servicio.descripcion}"></td>
+                                                        <td th:text="${servicio.precio}"></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-success btn-circle"/>
-                                                            <i class="fa fa-search-plus"></i>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>10/08/2020</td>
-                                                        <td>App Android</td>
-                                                        <td>4500€</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-success btn-circle"/>
-                                                            <i class="fa fa-search-plus"></i>
+                                                            <a th:href="${'/v0/servicios/getOne/' + servicio.idservicio }" style="color:white">
+                                                                <button type="button" class="btn btn-success btn-circle"/>
+                                                                <i class="fa fa-search-plus"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     </tbody>

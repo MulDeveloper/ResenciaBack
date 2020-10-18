@@ -19,5 +19,7 @@ public interface ServiceServicios {
     
     public ServiciosResencia getOne(int id);
     
+    public List<ServiciosResencia> lastTen();
+    
     
 }

@@ -57,5 +57,18 @@ public class ServiceAccesoPersonalPostgre implements ServiceAccesoPersonal{
             return false;
         }
     }
+
+    @Override
+    public boolean existUsername(String username) {
+         try{
+            Query q = em.createNamedQuery("AccesoPersonalResencia.findByUsername")
+                    .setParameter("username", username);
+            AccesoPersonalResencia accesoPersonal = (AccesoPersonalResencia) q.getSingleResult();
+            return true;
+        }
+        catch(NoResultException e){
+            return false;
+        }
+    }
     
 }
