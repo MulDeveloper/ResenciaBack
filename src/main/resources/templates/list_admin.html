@@ -60,6 +60,7 @@
                                                     <th>Apellido</th>
                                                     <th>Email</th>
                                                     <th>Teléfono</th>
+                                                    <th>Eliminar</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -69,6 +70,9 @@
                                                     <td th:text="${personal.apellidoPersonal}"></td>
                                                     <td th:text="${personal.emailPersonal}"></td>
                                                     <td th:text="${personal.telefono}"></td>
+                                                    <td>
+                                                        <a th:href="${'/v0/personal/del/' + personal.idpersonal}"><button type="button" name="button" class="btn btn-danger ml-2">Eliminar ❌</button></a>
+                                                    </td>
                                                 </tr>
                                                 
                                             </tbody>
