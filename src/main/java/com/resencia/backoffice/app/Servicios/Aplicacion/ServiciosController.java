@@ -68,6 +68,15 @@ public class ServiciosController {
 
     }
     
+    @GetMapping("/updatePago/{id}")
+    public String updatePago(@PathVariable("id") Integer id){
+        ServiciosResencia s = service.getOne(id);
+        s.setEstadoPago(true);
+        service.save(s);
+        return "redirect:/v0/servicios/lista";
+
+    }
+    
     @GetMapping("/getOne/{id}")
     public String getOne(Model m, @PathVariable("id") Integer id){
         //we list the service
