@@ -37,7 +37,8 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "TicketSoporte.findByIdticket", query = "SELECT t FROM TicketSoporte t WHERE t.idticket = :idticket"),
     @NamedQuery(name = "TicketSoporte.findByFechaAlta", query = "SELECT t FROM TicketSoporte t WHERE t.fechaAlta = :fechaAlta"),
     @NamedQuery(name = "TicketSoporte.findByDescripcion", query = "SELECT t FROM TicketSoporte t WHERE t.descripcion = :descripcion"),
-    @NamedQuery(name = "TicketSoporte.findByEstado", query = "SELECT t FROM TicketSoporte t WHERE t.estado = :estado")})
+    @NamedQuery(name = "TicketSoporte.findByEstado", query = "SELECT t FROM TicketSoporte t WHERE t.estado = :estado"),
+    @NamedQuery(name = "TicketSoporte.count", query = "SELECT COUNT(*) FROM TicketSoporte t WHERE t.estado != :param")})
 public class TicketSoporte implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -45,7 +45,9 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "ServiciosResencia.findByFechaEntrega", query = "SELECT s FROM ServiciosResencia s WHERE s.fechaEntrega = :fechaEntrega"),
     @NamedQuery(name = "ServiciosResencia.findByFechaPago", query = "SELECT s FROM ServiciosResencia s WHERE s.fechaPago = :fechaPago"),
     @NamedQuery(name = "ServiciosResencia.findByEstadoPago", query = "SELECT s FROM ServiciosResencia s WHERE s.estadoPago = :estadoPago"),
-    @NamedQuery(name = "ServiciosResencia.lastTen", query = "SELECT s FROM ServiciosResencia s ORDER BY s.fechaAlta DESC")})
+    @NamedQuery(name = "ServiciosResencia.lastTen", query = "SELECT s FROM ServiciosResencia s ORDER BY s.fechaAlta DESC"),
+    @NamedQuery(name = "ServiciosResencia.byMonth", query = "SELECT SUM(s.precio) FROM ServiciosResencia s WHERE EXTRACT(MONTH FROM s.fechaPago) = :mes"),
+    @NamedQuery(name = "ServiciosResencia.byService", query = "SELECT s.descripcion, COUNT (*) from ServiciosResencia s GROUP by s.descripcion")})
 public class ServiciosResencia implements Serializable {
 
     @OneToMany(mappedBy = "idservicio")
