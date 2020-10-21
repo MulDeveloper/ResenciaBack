@@ -7,16 +7,22 @@ package com.resencia.backoffice.app.Tickets.Infraestructura;
 
 import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceTicketPostgre implements ServiceTicket{
     
     private final TicketRepo repo;
+    private final EntityManager em;
 
-    public ServiceTicketPostgre(TicketRepo repo) {
+    public ServiceTicketPostgre(TicketRepo repo, EntityManager em) {
         this.repo = repo;
+        this.em = em;
     }
+
+    
     
     
 
@@ -33,6 +39,18 @@ public class ServiceTicketPostgre implements ServiceTicket{
         }
         catch(Exception e){
             return false;
+        }
+    }
+
+    @Override
+    public Long getTicketsNotClosed() {
+        try{
+            Query q = em.createNamedQuery("TicketSoporte.count").setParameter("param", "CERRADO");
+            Long res = Long.parseLong(""+q.getSingleResult());
+            return res;
+        }
+        catch(Exception e){
+            return null;
         }
     }
     

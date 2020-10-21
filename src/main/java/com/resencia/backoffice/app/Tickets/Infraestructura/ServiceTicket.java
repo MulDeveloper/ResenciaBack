@@ -15,4 +15,5 @@ import java.util.List;
 public interface ServiceTicket {
     public List<TicketSoporte> listAll();
     public boolean save(TicketSoporte t);
+    public Long getTicketsNotClosed();
 }
