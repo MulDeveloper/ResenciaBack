@@ -83,12 +83,12 @@
                                             <i class="fa fa-shopping-cart fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">0</div>
+                                            <div class="huge" th:text="${serviciosActivos}"></div>
                                             <div>Servicios</div>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/v0/servicios/lista">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver servicios</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -106,12 +106,12 @@
                                             <i class="fa fa-support fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">0</div>
+                                            <div class="huge" th:text="${ticketsActivos}"></div>
                                             <div>Tickets de soporte</div>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/v0/tickets/lista">
                                     <div class="panel-footer">
                                         <span class="pull-left">Ver Tickets</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -213,9 +213,30 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         
         
-        <script>
+        <script th:inline="javascript">
             window.onload = function() {
+               
+                var map = /*[[${data}]]*/ null;
+                var fechas = [];
+                var data = [];
+                var labels = [];
+                var percent = [];
+                for (const key in map) {
+                    fechas.push(`${key}`);
+                    data.push(parseInt(`${map[key]}`));
+                }
                 
+                var mapPie = /*[[${pieData}]]*/ null;
+                
+                console.log(mapPie);
+                
+                for (const i in mapPie) {
+                    labels.push(`${i}`);
+                    percent.push(parseFloat(`${mapPie[i]}`));
+                }
+                
+                
+                  
                 var chartVentas = new CanvasJS.Chart("chartContainer", {
                     theme: "light2", // "light1", "light2", "dark1", "dark2"
                     animationEnabled: true,
@@ -237,19 +258,19 @@
                             markerSize: 12,
                             xValueFormatString: "MMM, YYYY",
                             yValueFormatString: "####.##€",
-                            dataPoints: [        
-                                    { x: new Date(2016, 00, 1), y: 300.55 },
-                                    { x: new Date(2016, 01, 1), y: 71 },
-                                    { x: new Date(2016, 02, 1) , y: 55},
-                                    { x: new Date(2016, 03, 1) , y: 50 },
-                                    { x: new Date(2016, 04, 1) , y: 65},
-                                    { x: new Date(2016, 05, 1) , y: 85},
-                                    { x: new Date(2016, 06, 1) , y: 68},
-                                    { x: new Date(2016, 07, 1) , y: 28},
-                                    { x: new Date(2016, 08, 1) , y: 34},
-                                    { x: new Date(2016, 09, 1) , y: 24},
-                                    { x: new Date(2016, 10, 1) , y: 44},
-                                    { x: new Date(2016, 11, 1) , y: 34}
+                            dataPoints: [
+                                    { x: new Date(fechas[0]), y:  data[0]},
+                                    { x: new Date(fechas[1]), y:  data[1]},
+                                    { x: new Date(fechas[2]) , y:  data[2]},
+                                    { x: new Date(fechas[3]), y:  data[3]},
+                                    { x: new Date(fechas[4]), y:  data[4]},
+                                    { x: new Date(fechas[5]) , y:  data[5]},
+                                    { x: new Date(fechas[6]), y:  data[6]},
+                                    { x: new Date(fechas[7]), y:  data[7]},
+                                    { x: new Date(fechas[8]) , y:  data[8]},
+                                    { x: new Date(fechas[9]), y:  data[9]},
+                                    { x: new Date(fechas[10]), y:  data[10]},
+                                    { x: new Date(fechas[11]) , y:  data[11]}
                             ]
                     }]
             });
@@ -269,15 +290,14 @@
                                 toolTipContent: "<b>{label}</b>: {y}%",
                                 showInLegend: "true",
                                 legendText: "{label}",
-                                indexLabelFontSize: 16,
-                                indexLabel: "{label} - {y}%",
+                                indexLabelFontSize: 12,
                                 dataPoints: [
-                                        { y: 50.00, label: "Tienda Online" },
-                                        { y: 25.00, label: "App Android" },
-                                        { y: 10.62, label: "Web / Portfolio" },
-                                        { y: 5.02, label: "CRM / ERP" },
-                                        { y: 4.07, label: "Software a medida" },
-                                        { y: 1.22, label: "Mantenimiento" }
+                                        { y: percent[0], label: labels[0] },
+                                        { y: percent[1], label: labels[1] },
+                                        { y: percent[2], label: labels[2] },
+                                        { y: percent[3], label: labels[3] },
+                                        { y: percent[4], label: labels[4] },
+                                        { y: percent[5], label: labels[5] }
                                         
                                 ]
                         }]
