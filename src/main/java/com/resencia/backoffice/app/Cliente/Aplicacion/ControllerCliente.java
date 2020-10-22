@@ -31,15 +31,7 @@ public class ControllerCliente {
         m.addAttribute("title", "Lista clientes");
         return "listaClientes";
     }
-    
-    @GetMapping("/del/{id}")
-    public String deleteClient(@PathVariable("id") Integer id){  
-        //we delete the client and return to the list
-        this.service.delete(id);
-        return "redirect:/v0/clients/";
-    }
-    
-    
+
     
     @GetMapping("/add")
     public String addClient(Model m){

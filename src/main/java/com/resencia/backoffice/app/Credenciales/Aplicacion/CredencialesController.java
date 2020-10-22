@@ -8,6 +8,7 @@ package com.resencia.backoffice.app.Credenciales.Aplicacion;
 import org.springframework.stereotype.Controller;
 import com.resencia.backoffice.app.Credenciales.Dominio.CredencialesServicio;
 import com.resencia.backoffice.app.Credenciales.Infraestructura.ServiceCredencial;
+import com.resencia.backoffice.app.Email.Infraestructura.ServiceEmail;
 import com.resencia.backoffice.app.Security.Crypto;
 import com.resencia.backoffice.app.Servicios.Dominio.ServiciosResencia;
 import com.resencia.backoffice.app.Servicios.Infraestructura.ServiceServicios;
@@ -25,17 +26,14 @@ public class CredencialesController {
     private final ServiceServicios serviceServicios;
     private final ServiceCredencial serviceCredencial;
     private final Crypto crypto;
+    private final ServiceEmail serviceEmail;
 
-    public CredencialesController(ServiceServicios serviceServicios, ServiceCredencial serviceCredencial, Crypto crypto) {
+    public CredencialesController(ServiceServicios serviceServicios, ServiceCredencial serviceCredencial, Crypto crypto, ServiceEmail serviceEmail) {
         this.serviceServicios = serviceServicios;
         this.serviceCredencial = serviceCredencial;
         this.crypto = crypto;
+        this.serviceEmail = serviceEmail;
     }
-
-    
-    
-
-    
 
     
     @GetMapping("/alta/{idservicio}")
@@ -101,6 +99,28 @@ public class CredencialesController {
         m.addAttribute("title", "Credencial");
         m.addAttribute("credencial", c);
         return "showCredential";
+    }
+    
+    @GetMapping("/send/{id}")
+    public String sendCred(@PathVariable("id") Integer id){
+        //we get the credential to that service
+        CredencialesServicio c = this.serviceCredencial.getOne(id);
+
+        if(c == null){
+            return "redirect:/v0/servicios/lista";
+        }
+        
+        //we decrypt the password
+        
+        c.setPasswordCms(this.crypto.decrypt(c.getPasswordCms()));
+        c.setPassFtp(this.crypto.decrypt(c.getPassFtp()));
+        c.setPassSsh(this.crypto.decrypt(c.getPassSsh()));
+        
+        serviceEmail.sendEmailCredentials(c, c.getIdservicio().getIdcliente().getEmailCliente());
+        
+        
+        
+        return "redirect:/v0/servicios/lista";
     }
     
     @GetMapping("/edit/{id}")
