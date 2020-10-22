@@ -23,9 +23,8 @@ public class ServiceTicketPostgre implements ServiceTicket{
     }
 
     
-    
-    
 
+    
     @Override
     public List<TicketSoporte> listAll() {
         return this.repo.findAll();
@@ -58,5 +57,7 @@ public class ServiceTicketPostgre implements ServiceTicket{
     public TicketSoporte getOne(int id) {
         return this.repo.getOne(id);
     }
+
+
     
 }
