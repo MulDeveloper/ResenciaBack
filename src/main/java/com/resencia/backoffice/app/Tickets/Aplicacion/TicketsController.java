@@ -7,6 +7,7 @@ package com.resencia.backoffice.app.Tickets.Aplicacion;
 
 import com.resencia.backoffice.app.Cliente.Dominio.ClientesResencia;
 import com.resencia.backoffice.app.Cliente.Infraestructure.ServiceCliente;
+import com.resencia.backoffice.app.Email.Infraestructura.ServiceEmail;
 import com.resencia.backoffice.app.Tickets.Dominio.FormTicket;
 import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import com.resencia.backoffice.app.Tickets.Infraestructura.ServiceTicket;
@@ -24,11 +25,15 @@ public class TicketsController {
     
     private final ServiceCliente serviceCliente;
     private final ServiceTicket serviceTicket;
+    private final ServiceEmail serviceEmail;
 
-    public TicketsController(ServiceCliente serviceCliente, ServiceTicket serviceTicket) {
+    public TicketsController(ServiceCliente serviceCliente, ServiceTicket serviceTicket, ServiceEmail serviceEmail) {
         this.serviceCliente = serviceCliente;
         this.serviceTicket = serviceTicket;
+        this.serviceEmail = serviceEmail;
     }
+
+    
 
     
     
@@ -51,6 +56,9 @@ public class TicketsController {
         TicketSoporte t = serviceTicket.getOne(id);
         t.setEstado(status);
         serviceTicket.save(t);
+        if (status.equals("CERRADO")){
+            serviceEmail.sendEmailOnTicketClosed("bunn3rs@live.com");
+        }
         return "redirect:/v0/tickets/lista";
     }
     
