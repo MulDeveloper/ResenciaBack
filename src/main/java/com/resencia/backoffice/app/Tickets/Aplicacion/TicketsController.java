@@ -10,13 +10,11 @@ import com.resencia.backoffice.app.Cliente.Infraestructure.ServiceCliente;
 import com.resencia.backoffice.app.Tickets.Dominio.FormTicket;
 import com.resencia.backoffice.app.Tickets.Dominio.TicketSoporte;
 import com.resencia.backoffice.app.Tickets.Infraestructura.ServiceTicket;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,6 +37,21 @@ public class TicketsController {
         m.addAttribute("checkForm", new FormTicket());
         m.addAttribute("title", "Comprobacion previa");
         return "check";
+    }
+    
+    @GetMapping("/lista")
+    public String listTickets(Model m){
+        m.addAttribute("title", "Lista tickets");
+        m.addAttribute("tickets", serviceTicket.listAll());
+        return "tickets";
+    }
+    
+    @GetMapping("/setStatus/{id}/{status}")
+    public String setStatus(@PathVariable("id") Integer id, @PathVariable("status") String status){
+        TicketSoporte t = serviceTicket.getOne(id);
+        t.setEstado(status);
+        serviceTicket.save(t);
+        return "redirect:/v0/tickets/lista";
     }
     
     @PostMapping("/check")

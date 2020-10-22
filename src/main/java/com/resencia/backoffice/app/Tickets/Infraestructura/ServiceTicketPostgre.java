@@ -53,5 +53,10 @@ public class ServiceTicketPostgre implements ServiceTicket{
             return null;
         }
     }
+
+    @Override
+    public TicketSoporte getOne(int id) {
+        return this.repo.getOne(id);
+    }
     
 }

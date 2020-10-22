@@ -20,3 +20,15 @@ and open the template in the editor.
 textarea {
    resize: none;
 }
+
+.abierto{
+    background-color: #E41616;
+    font-weight: bold;
+    color: white;
+}
+
+.visto{
+    background-color: #0377AF;
+    font-weight: bold;
+    color: white;
+}
