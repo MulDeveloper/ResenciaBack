@@ -57,7 +57,7 @@ public class TicketsController {
         t.setEstado(status);
         serviceTicket.save(t);
         if (status.equals("CERRADO")){
-            serviceEmail.sendEmailOnTicketClosed("bunn3rs@live.com");
+            serviceEmail.sendEmailOnTicketClosed(t.getIdcliente().getEmailCliente());
         }
         return "redirect:/v0/tickets/lista";
     }
